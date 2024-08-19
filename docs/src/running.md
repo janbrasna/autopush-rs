@@ -78,7 +78,7 @@ Once you've completed the setup and have a crypto key, you can run a
 local Autopush with a single command:
 
 ``` bash
-$ CRYPTO_KEY="hkclU1V37Dnp-0DMF9HLe_40Nnr8kDTYVbo2yxuylzk=" docker-compose up
+$ CRYPTO_KEY="hkclU1V37Dnp-0DMF9HLe_40Nnr8kDTYVbo2yxuylzk=" docker compose up
 ```
 
 [docker-compose](https://docs.docker.com/compose/) will start up three
