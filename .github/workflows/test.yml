@@ -8,8 +8,8 @@ on:
 jobs:
     check:
         runs-on: ubuntu-latest
-        env:
-            DEST_DIR: /home/runner/.cargo/bin
+        #env:
+        #    DEST_DIR: /home/runner/.cargo/bin
         steps:
             - uses: actions/checkout@v4
             - run: pipx install poetry
@@ -18,6 +18,9 @@ jobs:
                   python-version: 3.12
                   cache: poetry
             - run: make lint
+            - run: |
+                cargo audit
+                rustc --version
             - uses: actions/cache@v4
               with:
                 path: |
@@ -26,9 +29,6 @@ jobs:
                   ~/.cargo/git/
                   target/
                 key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-            - run: |
-                cargo install cargo-audit
-                cargo audit
             - run: cargo build --features=emulator
             #- run: cargo install cargo-llvm-cov
             #- name: Install cargo-nextest
